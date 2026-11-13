@@ -1,0 +1,27 @@
+{
+ "name": "latency_check_L0",
+ "category": "latency_check",
+ "group": "latency",
+ "args": {
+  "nUe": 4,
+  "traffic": "udp",
+  "policy": "openloop",
+  "schedule": "0:100,10:25,20:100,30:6,40:50,50:100",
+  "loadSched": "0:30",
+  "simTime": 60,
+  "Ts": 0.1,
+  "seed": 1,
+  "e2Latency": 0,
+  "distances": "50,100,150,200",
+  "fixedPrb": 100
+ },
+ "ns3_version": "3.42",
+ "cmd": "/home/apurba/oran-throughput-control/ns-3-env/ns-3.42/build/scratch/scn/ns3.42-scenario_single_cell-optimized --nUe=4 --traffic=udp --policy=openloop --schedule=0:100,10:25,20:100,30:6,40:50,50:100 --loadSched=0:30 --simTime=60 --Ts=0.1 --seed=1 --e2Latency=0 --distances=50,100,150,200 --fixedPrb=100 --out=/home/apurba/oran-throughput-control/data/raw/latency_check/latency_check_L0.csv",
+ "binary_sha256_12": "cb900fdb8bd0",
+ "runtime_s": 114.4,
+ "patches": {
+  "ns3-oran-prb-control.patch": "8f78c402e1a7",
+  "pf-ff-mac-scheduler-maxdlprb.patch": "c0949e95693f"
+ },
+ "git_commit": "n/a (project directory is not a git repository)"
+}

@@ -1,0 +1,27 @@
+{
+ "name": "loadstep_openloop_s32",
+ "category": "loadstep_openloop",
+ "group": "loadstep",
+ "args": {
+  "nUe": 4,
+  "traffic": "udp",
+  "policy": "openloop",
+  "schedule": "0.0:6,4.8:25,7.7:15,11.2:6,13.5:100,16.5:6,20.1:75,23.2:6,26.8:25,30.4:75,34.6:15,39.1:25,42.4:50,44.8:100,47.1:15,50.4:75,52.5:6,56.2:25,58.7:50,62.9:75,65.4:25,69.1:100,71.3:6,75.1:25,78.0:6,80.7:75,85.2:25,88.5:6,92.9:15,97.3:75,99.8:6,104.4:25,108.4:6,112.1:25,115.3:15,119.1:75",
+  "loadSched": "0:30,40:10,80:30",
+  "simTime": 120,
+  "Ts": 0.1,
+  "seed": 32,
+  "e2Latency": 0,
+  "distances": "50,100,150,200",
+  "fixedPrb": 100
+ },
+ "ns3_version": "3.42",
+ "cmd": "/home/apurba/oran-throughput-control/ns-3-env/ns-3.42/build/scratch/scn/ns3.42-scenario_single_cell-optimized --nUe=4 --traffic=udp --policy=openloop --schedule=0.0:6,4.8:25,7.7:15,11.2:6,13.5:100,16.5:6,20.1:75,23.2:6,26.8:25,30.4:75,34.6:15,39.1:25,42.4:50,44.8:100,47.1:15,50.4:75,52.5:6,56.2:25,58.7:50,62.9:75,65.4:25,69.1:100,71.3:6,75.1:25,78.0:6,80.7:75,85.2:25,88.5:6,92.9:15,97.3:75,99.8:6,104.4:25,108.4:6,112.1:25,115.3:15,119.1:75 --loadSched=0:30,40:10,80:30 --simTime=120 --Ts=0.1 --seed=32 --e2Latency=0 --distances=50,100,150,200 --fixedPrb=100 --out=/home/apurba/oran-throughput-control/data/raw/loadstep_openloop/loadstep_openloop_s32.csv",
+ "binary_sha256_12": "7351ab115b91",
+ "runtime_s": 518.2,
+ "patches": {
+  "ns3-oran-prb-control.patch": "8f78c402e1a7",
+  "pf-ff-mac-scheduler-maxdlprb.patch": "c0949e95693f"
+ },
+ "git_commit": "n/a (project directory is not a git repository)"
+}

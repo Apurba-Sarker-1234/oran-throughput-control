@@ -1,0 +1,2 @@
+{"description":"nominal LTE bandwidth PRBs -> effective PRBs after RBG rounding (RBG size 4 at 100 PRB; allowed RBG = max(1, round(N/4)))",
+ "nominal":[6,15,25,50,75,100],"effective":[8,16,24,52,76,100],"rbg_allowed":[2,4,6,13,19,25]}

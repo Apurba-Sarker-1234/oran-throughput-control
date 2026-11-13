@@ -1,0 +1,27 @@
+{
+ "name": "static_default_load120_N100",
+ "category": "static_default",
+ "group": "static_default",
+ "args": {
+  "nUe": 4,
+  "traffic": "udp",
+  "policy": "fixed",
+  "schedule": "0:100",
+  "loadSched": "0:30",
+  "simTime": 20,
+  "Ts": 0.1,
+  "seed": 1,
+  "e2Latency": 0,
+  "distances": "50,100,150,200",
+  "fixedPrb": 100
+ },
+ "ns3_version": "3.42",
+ "cmd": "/home/apurba/oran-throughput-control/ns-3-env/ns-3.42/build/scratch/scn/ns3.42-scenario_single_cell-optimized --nUe=4 --traffic=udp --policy=fixed --schedule=0:100 --loadSched=0:30 --simTime=20 --Ts=0.1 --seed=1 --e2Latency=0 --distances=50,100,150,200 --fixedPrb=100 --out=/home/apurba/oran-throughput-control/data/raw/static_default/static_default_load120_N100.csv",
+ "binary_sha256_12": "7351ab115b91",
+ "runtime_s": 73.5,
+ "patches": {
+  "ns3-oran-prb-control.patch": "8f78c402e1a7",
+  "pf-ff-mac-scheduler-maxdlprb.patch": "c0949e95693f"
+ },
+ "git_commit": "n/a (project directory is not a git repository)"
+}

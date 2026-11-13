@@ -1,0 +1,5 @@
+ns-3-env/
+*.e2.db
+*.e2.db-journal
+__pycache__/
+*.pyc

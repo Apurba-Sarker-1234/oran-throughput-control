@@ -1,0 +1,53 @@
+--- a/src/lte/model/pf-ff-mac-scheduler.cc
++++ b/src/lte/model/pf-ff-mac-scheduler.cc
+@@ -18,6 +18,8 @@
+  */
+ 
+ #include "pf-ff-mac-scheduler.h"
++#include <cmath>
++#include <algorithm>
+ 
+ #include "lte-amc.h"
+ #include "lte-vendor-specific-parameters.h"
+@@ -102,7 +104,13 @@
+                           "The MCS of the UL grant, must be [0..15] (default 0)",
+                           UintegerValue(0),
+                           MakeUintegerAccessor(&PfFfMacScheduler::m_ulGrantMcs),
+-                          MakeUintegerChecker<uint8_t>());
++                          MakeUintegerChecker<uint8_t>())
++            .AddAttribute("MaxDlPrb",
++                          "Scheduler-level cap on usable DL PRBs (PRB-control patch); RBGs "
++                          "starting at or above this PRB index are never allocated",
++                          UintegerValue(100),
++                          MakeUintegerAccessor(&PfFfMacScheduler::m_maxDlPrb),
++                          MakeUintegerChecker<uint16_t>());
+     return tid;
+ }
+ 
+@@ -475,6 +483,16 @@
+     rbgMap.resize(m_cschedCellConfig.m_dlBandwidth / rbgSize, false);
+ 
+     rbgMap = m_ffrSapProvider->GetAvailableDlRbg();
++    // PRB-control patch: block RBGs beyond the PRB cap
++    // allowed RBGs = round(cap / rbgSize), at least 1 (RBG granularity is 4 PRBs at 100 PRB)
++    const size_t allowedRbg = std::max<size_t>(1, std::lround(double(m_maxDlPrb) / rbgSize));
++    for (size_t g = 0; g < rbgMap.size(); g++)
++    {
++        if (g >= allowedRbg)
++        {
++            rbgMap[g] = true;
++        }
++    }
+     for (auto it = rbgMap.begin(); it != rbgMap.end(); it++)
+     {
+         if (*it)
+--- a/src/lte/model/pf-ff-mac-scheduler.h
++++ b/src/lte/model/pf-ff-mac-scheduler.h
+@@ -396,6 +396,7 @@
+     // RACH attributes
+     std::vector<RachListElement_s> m_rachList; ///< RACH list
+     std::vector<uint16_t> m_rachAllocationMap; ///< RACH allocation map
++    uint16_t m_maxDlPrb{100};                  ///< PRB cap (patch)
+     uint8_t m_ulGrantMcs;                      ///< MCS for UL grant (default 0)
+ };
+ 
